@@ -3,11 +3,14 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
-            ],
+				"${workspaceFolder}/**",
+				"C:/Program Files (x86)/glm/include/**",
+				"C:/Program Files (x86)/VulkanSDK/1.3.283.0/Include/**",
+				"C:/Program Files (x86)/glfw/include/**"
+			],
             "defines": [],
-            "compilerPath": "/usr/bin/gcc",
-            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+            "intelliSenseMode": "windows-gcc-x64",
             "cppStandard": "c++23",
             "cStandard": "c23"
         }

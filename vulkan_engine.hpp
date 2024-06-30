@@ -1,27 +1,58 @@
 #ifndef VULKAN_ENGINE_HPP
 #define VULKAN_ENGINE_HPP
 
+#include <optional>
+#include <vector>
+
+#define VK_USE_PLATFORM_WIN32_KHR
+#define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+#define GLFW_EXPOSE_NATIVE_WIN32
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
 
 #include <vulkan/vulkan.hpp>
+
+const std::vector<const char*> deviceExtensions = {
+    VK_KHR_SWAPCHAIN_EXTENSION_NAME};
+
+struct QueueFamilyIndices {
+  std::optional<uint32_t> graphicsFamily;
+  std::optional<uint32_t> presentFamily;
+
+  bool IsComplete();
+};
 
 class VulkanEngine {
  public:
   VulkanEngine(const unsigned short width, const unsigned short height,
                const char* title = "VulkanApp", GLFWmonitor* monitor = nullptr);
   ~VulkanEngine() noexcept;
+
   void Run() const;
 
  private:
   GLFWwindow* _window;
-  VkPhysicalDevice _physicalDevice;
-  VkDevice _device;
+
   VkInstance _instance;
+  VkSurfaceKHR _surface;
+
+  VkDevice _device;
+  VkPhysicalDevice _physicalDevice;
+
+  VkQueue _presentQueue;
+  VkQueue _graphicsQueue;
 
   void CreateInstance();
   void CreateLogicalDevice();
+  void CreateSurface();
+
   void PickPhysicalDevice();
-  std::optional<uint32_t> FindQueueFamilies(VkPhysicalDevice& device);
+
+  bool IsDeviceSuitable(VkPhysicalDevice device);
+  bool IsDeviceExtensionSupport(VkPhysicalDevice device);
+
+  QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice& device);
 };
 
 #endif
