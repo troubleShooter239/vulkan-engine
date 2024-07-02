@@ -7,9 +7,9 @@ Checks: >
   modernize-use-nullptr,
   readability-braces-around-statements,
   readability-redundant-member-init
-WarningsAsErrors: '*'
-HeaderFilterRegex: [h, hpp]
-ImplementationFileExtensions: [c,cpp]
+WarningsAsErrors: "*"
+HeaderFileExtensions: [h, hpp]
+ImplementationFileExtensions: [c, cpp]
 HeaderFilterRegex: (include|src)/
 FormatStyle: file
 CheckOptions:

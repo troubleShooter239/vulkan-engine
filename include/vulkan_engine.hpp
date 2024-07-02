@@ -1,5 +1,4 @@
-#ifndef VULKAN_ENGINE_HPP
-#define VULKAN_ENGINE_HPP
+#pragma once
 
 #include <optional>
 #include <vector>
@@ -55,5 +54,3 @@ class VulkanEngine {
 
 	QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice& device);
 };
-
-#endif

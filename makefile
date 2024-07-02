@@ -9,8 +9,8 @@ SRC_DIR = src
 BUILD_DIR = build
 BIN = main
 
-INCLUDES = -I$(VULKAN_INCLUDE_PATH) -I$(GLFW_INCLUDE_PATH)
-LIBS = -L$(VULKAN_LIB_PATH) -lvulkan -L$(GLFW_LIB_PATH) -lglfw
+INCLUDES = -I"$(VULKAN_INCLUDE_PATH)" -I"$(GLFW_INCLUDE_PATH)"
+LIBS = -L"$(VULKAN_LIB_PATH)" -lvulkan -L"$(GLFW_LIB_PATH)" -lglfw
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
