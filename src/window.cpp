@@ -2,9 +2,10 @@
 
 #include <stdexcept>
 
-#include "window.hpp"
-
-Window::Window(const int width, const int height, const char* name) { InitWindow(); }
+Window::Window(const int& width, const int& height, const char* name)
+    : _width{width}, _height{height}, _windowName{name} {
+    InitWindow();
+}
 
 Window::~Window() {
     glfwDestroyWindow(_window);

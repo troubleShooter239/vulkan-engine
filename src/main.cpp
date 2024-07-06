@@ -1,15 +1,13 @@
-#include <cstdlib>
 #include <iostream>
-#include <stdexcept>
 
-#include "include/vulkan_engine.hpp"
+#include "include/vulkan_ge.hpp"
 
 int main() {
-    VulkanEngine engine(800, 600);
+    VulkanGE gameEngine{800, 600, "App"};
     try {
-        engine.Run();
+        gameEngine.Run();
     } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << e.what() << '\n';
         return EXIT_FAILURE;
     }
 

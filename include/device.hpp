@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include <vector>
 
 #include "window.hpp"
@@ -16,7 +15,7 @@ struct QueueFamilyIndices {
     uint32_t presentFamily;
     bool graphicsFamilyHasValue = false;
     bool presentFamilyHasValue = false;
-    bool IsComplete() { return graphicsFamilyHasValue && presentFamilyHasValue; }
+    bool IsComplete() const;
 };
 
 class Device {
@@ -35,9 +34,9 @@ public:
     VkQueue GetGraphicsQueue() const;
     VkQueue GetPresentQueue() const;
 
-    SwapChainSupportDetails GetSwapChainSupport() { return QuerySwapChainSupport(physicalDevice); }
+    SwapChainSupportDetails GetSwapChainSupport();
     uint32_t FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
-    QueueFamilyIndices FindPhysicalQueueFamilies() { return findQueueFamilies(physicalDevice); }
+    QueueFamilyIndices FindPhysicalQueueFamilies();
     VkFormat FindSupportedFormat(const std::vector<VkFormat> &candidates, VkImageTiling tiling,
         VkFormatFeatureFlags features);
 
@@ -57,9 +56,11 @@ public:
 
 private:
 #ifdef NDEBUG
-    const bool _enableValidationLayers = false;
+    const bool _ENABLE_VALIDATION_LAYERS = false;
 #else
-    const bool _enableValidationLayers = true;
+    const bool _ENABLE_VALIDATION_LAYERS = true;
+    // ! TEMPORARY VALUE
+    // const bool _ENABLE_VALIDATION_LAYERS = false;
 #endif
 
     void CreateInstance();
