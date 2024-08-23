@@ -25,7 +25,7 @@ SwapChain::~SwapChain() {
         _swapChain = nullptr;
     }
 
-    for (int i = 0; i < _depthImages.size(); i++) {
+    for (size_t i = 0; i < _depthImages.size(); i++) {
         vkDestroyImageView(_device.GetDevice(), _depthImageViews[i], nullptr);
         vkDestroyImage(_device.GetDevice(), _depthImages[i], nullptr);
         vkFreeMemory(_device.GetDevice(), _depthImageMemories[i], nullptr);
