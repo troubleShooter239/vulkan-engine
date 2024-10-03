@@ -42,6 +42,7 @@ if(WIN32)
 		message(STATUS "Founded vulkan sdk directory")
 		set(VULKAN_INCLUDE "${VULKAN_DIR}/Include")
 		set(VULKAN_LIB "${VULKAN_DIR}/Lib")
+		set(GLSLC "${VULKAN_DIR}/Bin/glslc.exe")
 	else()
 		message(FATAL_ERROR "Vulkan SDK directory not found! Please set the VULKAN_DIR variable")
 	endif()
@@ -60,6 +61,7 @@ if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE glfw3.lib vulkan-1.lib)
 else()
     find_package(Vulkan REQUIRED)
+	set(GLSLC "glslc")
     find_package(glfw3 REQUIRED)
     target_include_directories(${PROJECT_NAME} PRIVATE ${Vulkan_INCLUDE_DIRS} "src")
     target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Vulkan glfw)
@@ -71,7 +73,7 @@ foreach(SHADER ${SHADERS})
 	set(SPIRV "${CMAKE_CURRENT_BINARY_DIR}/shaders/${FILE_NAME}.spv")
     add_custom_command(
         OUTPUT ${SPIRV}
-        COMMAND ${Vulkan_GLSLC_EXECUTABLE} ${SHADER} -o ${SPIRV}
+        COMMAND ${GLSLC} ${SHADER} -o ${SPIRV}
         DEPENDS ${SHADER}
         COMMENT "Compiling shader ${FILE_NAME}"
     )
