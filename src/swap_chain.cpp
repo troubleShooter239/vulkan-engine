@@ -1,4 +1,4 @@
-#include "include/swap_chain.hpp"
+#include "swap_chain.hpp"
 
 #include <array>
 #include <iostream>
@@ -292,7 +292,7 @@ void SwapChain::CreateDepthResources() {
     _depthImageMemories.resize(imageCount);
     _depthImageViews.resize(imageCount);
 
-    for (int i = 0; i < _depthImages.size(); i++) {
+    for (std::size_t i = 0; i < _depthImages.size(); i++) {
         VkImageCreateInfo imageInfo{};
         imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
         imageInfo.imageType = VK_IMAGE_TYPE_2D;

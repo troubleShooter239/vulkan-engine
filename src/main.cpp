@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "include/vulkan_ge.hpp"
+#include "vulkan_ge.hpp"
 
 int main() {
     VulkanGE gameEngine{800, 600, "App"};

@@ -69,7 +69,7 @@ endif()
 
 # Compiling shaders
 foreach(SHADER ${SHADERS})
-    get_filename_component(FILE_NAME ${SHADER} NAME_WE)
+    get_filename_component(FILE_NAME ${SHADER} NAME)
 	set(SPIRV "${CMAKE_CURRENT_BINARY_DIR}/shaders/${FILE_NAME}.spv")
     add_custom_command(
         OUTPUT ${SPIRV}

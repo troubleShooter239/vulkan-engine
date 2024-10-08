@@ -1,4 +1,4 @@
-#include "include/model.hpp"
+#include "model.hpp"
 
 #include <cassert>
 #include <cstring>

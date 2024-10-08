@@ -1,4 +1,4 @@
-#include "include/vulkan_ge.hpp"
+#include "vulkan_ge.hpp"
 
 #include <array>
 #include <stdexcept>
@@ -60,7 +60,7 @@ void VulkanGE::CreateCommandBuffers() {
         VK_SUCCESS)
         throw std::runtime_error("failed to allocate command buffers");
 
-    for (int i = 0; i < _commandBuffers.size(); i++) {
+    for (std::size_t i = 0; i < _commandBuffers.size(); i++) {
         VkCommandBufferBeginInfo beginInfo{};
         beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
         if (vkBeginCommandBuffer(_commandBuffers[i], &beginInfo) != VK_SUCCESS)

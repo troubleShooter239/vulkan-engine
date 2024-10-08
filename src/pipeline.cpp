@@ -1,10 +1,10 @@
-#include "include/pipeline.hpp"
+#include "pipeline.hpp"
 
 #include <cassert>
 #include <fstream>
 #include <stdexcept>
 
-#include "include/model.hpp"
+#include "model.hpp"
 
 Pipeline::Pipeline(Device& device, const char* vertFilePath, const char* fragFilePath,
     const PipelineConfigInfo& configInfo)
